@@ -138,6 +138,16 @@ const CreateGraphic = () => {
             pigImage={pigImage}
             onImageSet={handleImageSet}
             onNext={() => setStep(2)}
+            aspectRatio={
+              selectedSet
+                ? { landscape: 16 / 9, square: 1, story: 9 / 16 }[selectedSet.templates[0]?.type] ?? 1
+                : 1
+            }
+            aspectLabel={
+              selectedSet
+                ? { landscape: "Landscape", square: "Square", story: "Story" }[selectedSet.templates[0]?.type] ?? "Square"
+                : "Square"
+            }
           />
         )}
         {step === 2 && (
