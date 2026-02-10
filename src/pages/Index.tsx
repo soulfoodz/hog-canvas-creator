@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Plus, Image, Sparkles, MoreVertical, Users, Gift } from "lucide-react";
+import { Plus, Image, Sparkles, MoreVertical, Users, Gift, Coins } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,9 +26,18 @@ const Index = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="flex items-center gap-2 mb-1">
-            <Sparkles className="w-5 h-5 text-accent" />
-            <h1 className="font-display text-2xl font-bold">LotGraphics</h1>
+          <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-accent" />
+              <h1 className="font-display text-2xl font-bold">LotGraphics</h1>
+            </div>
+            <button
+              onClick={() => navigate("/shop")}
+              className="flex items-center gap-1.5 bg-accent/10 text-accent rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-accent/20 transition-colors"
+            >
+              <Coins className="w-4 h-4" />
+              <span>10</span>
+            </button>
           </div>
           <p className="text-sm text-muted-foreground">
             Generate custom social media content for your auction listings and more in seconds.
