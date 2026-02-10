@@ -10,7 +10,7 @@ interface StepPigInfoProps {
   onNext: () => void;
 }
 
-const sexOptions: PigInfo["sex"][] = ["Boar", "Gilt", "Barrow"];
+
 
 const StepPigInfo = ({ pigInfo, onChange, onNext }: StepPigInfoProps) => {
   const update = (field: keyof PigInfo, value: string) => {
@@ -89,22 +89,16 @@ const StepPigInfo = ({ pigInfo, onChange, onNext }: StepPigInfoProps) => {
         </div>
 
         <div>
-          <Label className="text-sm font-medium mb-2 block">Sex</Label>
-          <div className="flex gap-2">
-            {sexOptions.map((sex) => (
-              <button
-                key={sex}
-                onClick={() => update("sex", sex)}
-                className={`flex-1 py-2.5 rounded-lg text-sm font-medium border transition-colors ${
-                  pigInfo.sex === sex
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-card border-border text-foreground"
-                }`}
-              >
-                {sex}
-              </button>
-            ))}
-          </div>
+          <Label htmlFor="sex" className="text-sm font-medium">
+            Sex
+          </Label>
+          <Input
+            id="sex"
+            placeholder="e.g. Boar, Gilt, Barrow"
+            value={pigInfo.sex}
+            onChange={(e) => update("sex", e.target.value)}
+            className="mt-1.5"
+          />
         </div>
       </div>
 
