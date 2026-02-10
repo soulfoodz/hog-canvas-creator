@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Plus, Image, Sparkles, MoreVertical, Users } from "lucide-react";
+import { Plus, Image, Sparkles, MoreVertical, Users, Gift } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { motion } from "framer-motion";
-import { mockTemplateSets, mockSharedTemplateSets } from "@/data/mockTemplates";
+import { mockTemplateSets, mockFreeTemplateSets, mockSharedTemplateSets } from "@/data/mockTemplates";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -84,7 +84,7 @@ const Index = () => {
       <div className="px-4 flex-1">
         <h2 className="font-display text-base font-semibold mb-3 flex items-center gap-2">
           <Image className="w-4 h-4 text-muted-foreground" />
-          Your Templates
+          Your Custom Templates
         </h2>
 
         <div className="space-y-3">
@@ -123,6 +123,52 @@ const Index = () => {
             </motion.button>
           ))}
         </div>
+
+        {/* Free Templates */}
+        {mockFreeTemplateSets.length > 0 && (
+          <>
+            <h2 className="font-display text-base font-semibold mt-6 mb-3 flex items-center gap-2">
+              <Gift className="w-4 h-4 text-muted-foreground" />
+              Free Templates
+            </h2>
+
+            <div className="space-y-3">
+              {mockFreeTemplateSets.map((set, i) => (
+                <motion.button
+                  key={set.id}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + i * 0.08 }}
+                  onClick={() => navigate("/create")}
+                  className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <Gift className="w-5 h-5 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-sm">{set.name}</h3>
+                      <p className="text-xs text-muted-foreground">
+                        Free · {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
+                      </p>
+                    </div>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
+                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0 shrink-0">
+                          <MoreVertical className="w-4 h-4 text-muted-foreground" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" className="bg-popover z-50">
+                        <DropdownMenuItem>Use Template</DropdownMenuItem>
+                        <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
+          </>
+        )}
 
         {/* Shared with you */}
         {mockSharedTemplateSets.length > 0 && (
