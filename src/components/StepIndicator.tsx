@@ -12,7 +12,7 @@ const StepIndicator = ({ steps, currentStep }: StepIndicatorProps) => {
         const isComplete = i < currentStep;
         const isActive = i === currentStep;
         return (
-          <div key={i} className="flex items-center gap-1 flex-1">
+          <div key={i} className={`flex items-center gap-1 ${i < steps.length - 1 ? 'flex-1' : 'shrink-0'}`}>
             <div
               className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold shrink-0 transition-colors ${
                 isComplete
