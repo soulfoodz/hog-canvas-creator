@@ -122,7 +122,7 @@ const Index = () => {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.08 }}
-                  onClick={() => navigate("/create")}
+                  onClick={() => navigate(`/template/${set.id}`)}
                   className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
                 >
                   <div className="flex items-center gap-3">
@@ -168,7 +168,7 @@ const Index = () => {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + i * 0.08 }}
-                  onClick={() => navigate("/create")}
+                  onClick={() => navigate(`/template/${set.id}`)}
                   className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
                 >
                   <div className="flex items-center gap-3">
