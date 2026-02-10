@@ -31,7 +31,7 @@ const Index = () => {
             <h1 className="font-display text-2xl font-bold">LotGraphics</h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            Generate social media graphics for your auction listings and more in seconds.
+            Generate custom social media content for your auction listings and more in seconds.
           </p>
         </motion.div>
       </header>
