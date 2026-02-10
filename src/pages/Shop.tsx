@@ -173,7 +173,7 @@ const Shop = () => {
             className="space-y-3"
           >
             <p className="text-sm text-muted-foreground mb-4">
-              Tokens are used to generate graphics from your templates.
+              Tokens are used to generate graphics from your templates. You'll use them to pay for your graphics.
             </p>
             {tokenPackages.map((pkg) => (
               <div
