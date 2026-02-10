@@ -53,32 +53,6 @@ const Index = () => {
         </motion.div>
       </div>
 
-      {/* Quick stats */}
-      <div className="px-4 mb-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="grid grid-cols-2 gap-3"
-        >
-          <div className="bg-card border border-border rounded-xl p-4 text-center">
-            <div className="text-2xl font-display font-bold text-primary">
-              {mockTemplateSets.length}
-            </div>
-            <div className="text-xs text-muted-foreground mt-0.5">
-              Template Set{mockTemplateSets.length !== 1 ? "s" : ""}
-            </div>
-          </div>
-          <div className="bg-card border border-border rounded-xl p-4 text-center">
-            <div className="text-2xl font-display font-bold text-accent">
-              {totalTemplates}
-            </div>
-            <div className="text-xs text-muted-foreground mt-0.5">
-              Total Variations
-            </div>
-          </div>
-        </motion.div>
-      </div>
 
       {/* Recent templates */}
       <div className="px-4 flex-1">
