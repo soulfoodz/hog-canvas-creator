@@ -149,7 +149,7 @@ const Index = () => {
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-sm">{set.name}</h3>
                       <p className="text-xs text-muted-foreground">
-                        Free · {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
+                        {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
                       </p>
                     </div>
                     <DropdownMenu>
@@ -195,7 +195,10 @@ const Index = () => {
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-sm">{set.name}</h3>
                       <p className="text-xs text-muted-foreground">
-                        Shared by {set.sharedBy} · {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
+                        Shared by {set.sharedBy}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
                       </p>
                     </div>
                     <DropdownMenu>
