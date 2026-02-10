@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Plus, Image, Sparkles } from "lucide-react";
-import ThemeToggle from "@/components/ThemeToggle";
 import { motion } from "framer-motion";
 import { mockTemplateSets } from "@/data/mockTemplates";
 
@@ -21,12 +20,9 @@ const Index = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="flex items-center justify-between mb-1">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-accent" />
-              <h1 className="font-display text-2xl font-bold">LotGraphics</h1>
-            </div>
-            <ThemeToggle />
+          <div className="flex items-center gap-2 mb-1">
+            <Sparkles className="w-5 h-5 text-accent" />
+            <h1 className="font-display text-2xl font-bold">LotGraphics</h1>
           </div>
           <p className="text-sm text-muted-foreground">
             Generate social media graphics for your auction listings in seconds.

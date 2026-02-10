@@ -9,7 +9,6 @@ import StepVariations from "@/components/steps/StepVariations";
 import StepResults from "@/components/steps/StepResults";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, X } from "lucide-react";
-import ThemeToggle from "@/components/ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 
 const stepLabels = ["Template", "Photo", "Details", "Variations", "Done"];
@@ -102,16 +101,14 @@ const CreateGraphic = () => {
         <h1 className="font-display text-base font-bold">
           {step === 4 ? "Complete" : "New Graphic"}
         </h1>
-        <div className="flex items-center gap-1 -mr-2">
-          <ThemeToggle />
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => navigate("/")}
-          >
-            <X className="w-4 h-4" />
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="-mr-2"
+          onClick={() => navigate("/")}
+        >
+          <X className="w-4 h-4" />
+        </Button>
       </header>
 
       {/* Step indicator */}
