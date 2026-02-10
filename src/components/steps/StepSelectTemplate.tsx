@@ -1,17 +1,11 @@
 import { TemplateSet } from "@/types";
-import { mockTemplateSets } from "@/data/mockTemplates";
+import { mockTemplateSets, mockFreeTemplateSets, mockSharedTemplateSets } from "@/data/mockTemplates";
 import { motion } from "framer-motion";
-import { Image, Layers } from "lucide-react";
+import { Image, Gift, Users } from "lucide-react";
 
 interface StepSelectTemplateProps {
   onSelect: (templateSet: TemplateSet) => void;
 }
-
-const typeLabel: Record<string, string> = {
-  landscape: "Landscape",
-  square: "Square",
-  story: "Story",
-};
 
 const StepSelectTemplate = ({ onSelect }: StepSelectTemplateProps) => {
   return (
@@ -21,36 +15,106 @@ const StepSelectTemplate = ({ onSelect }: StepSelectTemplateProps) => {
         Select a template set to start building your graphic.
       </p>
 
+      {/* Your Custom Templates */}
+      <h3 className="font-display text-base font-semibold mb-3 flex items-center gap-2">
+        <Image className="w-4 h-4 text-muted-foreground" />
+        Your Custom Templates
+      </h3>
       <div className="space-y-3">
         {mockTemplateSets.map((set, i) => (
           <motion.button
             key={set.id}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.08 }}
             onClick={() => onSelect(set)}
             className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
           >
-            <div className="flex items-start gap-3">
-              <div className="w-14 h-14 rounded-lg bg-secondary flex items-center justify-center shrink-0">
-                <Image className="w-6 h-6 text-primary" />
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center shrink-0">
+                <Image className="w-5 h-5 text-primary" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-display font-semibold text-base leading-tight">
-                  {set.name}
-                </h3>
-                <div className="flex items-center gap-1.5 mt-1.5">
-                  <Layers className="w-3.5 h-3.5 text-muted-foreground" />
-                  <span className="text-xs text-muted-foreground">
-                    {set.templates.length} variation{set.templates.length > 1 ? "s" : ""} ·{" "}
-                    {set.templates.map((t) => typeLabel[t.type]).join(", ")}
-                  </span>
-                </div>
+                <h3 className="font-semibold text-sm">{set.name}</h3>
+                <p className="text-xs text-muted-foreground">
+                  {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
+                </p>
               </div>
             </div>
           </motion.button>
         ))}
       </div>
+
+      {/* Free Templates */}
+      {mockFreeTemplateSets.length > 0 && (
+        <>
+          <h3 className="font-display text-base font-semibold mt-6 mb-3 flex items-center gap-2">
+            <Gift className="w-4 h-4 text-muted-foreground" />
+            Free Templates
+          </h3>
+          <div className="space-y-3">
+            {mockFreeTemplateSets.map((set, i) => (
+              <motion.button
+                key={set.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + i * 0.08 }}
+                onClick={() => onSelect(set)}
+                className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <Gift className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-sm">{set.name}</h3>
+                    <p className="text-xs text-muted-foreground">
+                      {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
+                    </p>
+                  </div>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Shared with You */}
+      {mockSharedTemplateSets.length > 0 && (
+        <>
+          <h3 className="font-display text-base font-semibold mt-6 mb-3 flex items-center gap-2">
+            <Users className="w-4 h-4 text-muted-foreground" />
+            Shared with You
+          </h3>
+          <div className="space-y-3">
+            {mockSharedTemplateSets.map((set, i) => (
+              <motion.button
+                key={set.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + i * 0.08 }}
+                onClick={() => onSelect(set)}
+                className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <Users className="w-5 h-5 text-accent" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-sm">{set.name}</h3>
+                    <p className="text-xs text-muted-foreground">
+                      Shared by {set.sharedBy}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
+                    </p>
+                  </div>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
