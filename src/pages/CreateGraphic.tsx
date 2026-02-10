@@ -162,6 +162,7 @@ const CreateGraphic = () => {
           <StepPreview
             pigImage={pigImage}
             onContinue={() => setStep(4)}
+            onBack={() => setStep(2)}
           />
         )}
         {step === 4 && selectedSet && (

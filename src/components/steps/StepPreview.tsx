@@ -5,9 +5,10 @@ import { Eye } from "lucide-react";
 interface StepPreviewProps {
   pigImage: string | null;
   onContinue: () => void;
+  onBack: () => void;
 }
 
-const StepPreview = ({ pigImage, onContinue }: StepPreviewProps) => {
+const StepPreview = ({ pigImage, onContinue, onBack }: StepPreviewProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -34,9 +35,14 @@ const StepPreview = ({ pigImage, onContinue }: StepPreviewProps) => {
         )}
       </div>
 
-      <Button className="w-full" onClick={onContinue}>
-        Continue
-      </Button>
+      <div className="flex gap-3">
+        <Button variant="outline" className="flex-1" onClick={onBack}>
+          Go Back
+        </Button>
+        <Button className="flex-1" onClick={onContinue}>
+          Continue
+        </Button>
+      </div>
     </motion.div>
   );
 };
