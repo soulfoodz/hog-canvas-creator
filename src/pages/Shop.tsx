@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Coins, Image, Check } from "lucide-react";
 import { motion } from "framer-motion";
 
-type Tab = "templates" | "coins";
+type Tab = "templates" | "tokens";
 
 const templatePackages = [
   {
@@ -31,35 +31,35 @@ const templatePackages = [
   },
 ];
 
-const coinPackages = [
+const tokenPackages = [
   {
     id: "cp-1",
-    name: "10 Coins",
+    name: "10 Tokens",
     description: "Get started with a small pack",
     price: "$4.99",
-    coins: 10,
+    tokens: 10,
   },
   {
     id: "cp-2",
-    name: "30 Coins",
+    name: "30 Tokens",
     description: "Most popular choice",
     price: "$11.99",
-    coins: 30,
+    tokens: 30,
     popular: true,
   },
   {
     id: "cp-3",
-    name: "75 Coins",
+    name: "75 Tokens",
     description: "Best value for power users",
     price: "$24.99",
-    coins: 75,
+    tokens: 75,
   },
   {
     id: "cp-4",
-    name: "150 Coins",
+    name: "150 Tokens",
     description: "Go all in",
     price: "$39.99",
-    coins: 150,
+    tokens: 150,
   },
 ];
 
@@ -112,15 +112,15 @@ const Shop = () => {
             Templates
           </button>
           <button
-            onClick={() => setActiveTab("coins")}
+            onClick={() => setActiveTab("tokens")}
             className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${
-              activeTab === "coins"
+              activeTab === "tokens"
                 ? "bg-card text-foreground shadow-sm"
                 : "text-muted-foreground"
             }`}
           >
             <Coins className="w-4 h-4" />
-            Coins
+            Tokens
           </button>
         </motion.div>
       </div>
@@ -165,17 +165,17 @@ const Shop = () => {
           </motion.div>
         )}
 
-        {activeTab === "coins" && (
+        {activeTab === "tokens" && (
           <motion.div
-            key="coins"
+            key="tokens"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className="space-y-3"
           >
             <p className="text-sm text-muted-foreground mb-4">
-              Coins are used to generate graphics from your templates.
+              Tokens are used to generate graphics from your templates.
             </p>
-            {coinPackages.map((pkg) => (
+            {tokenPackages.map((pkg) => (
               <div
                 key={pkg.id}
                 className={`relative bg-card border rounded-xl p-4 ${
