@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const stepLabels = ["Template", "Photo", "Details", "Variations", "Preview", "Done"];
+const stepLabels = ["Template", "Photo", "Details", "Preview", "Variations", "Done"];
 
 const initialPigInfo: PigInfo = {
   earNotch: "",
@@ -158,18 +158,18 @@ const CreateGraphic = () => {
             onNext={() => setStep(3)}
           />
         )}
-        {step === 3 && selectedSet && (
+        {step === 3 && (
+          <StepPreview
+            pigImage={pigImage}
+            onContinue={() => setStep(4)}
+          />
+        )}
+        {step === 4 && selectedSet && (
           <StepVariations
             templateSet={selectedSet}
             selectedIds={selectedVariations}
             onToggle={toggleVariation}
-            onGenerate={() => setStep(4)}
-          />
-        )}
-        {step === 4 && (
-          <StepPreview
-            pigImage={pigImage}
-            onContinue={handleGenerate}
+            onGenerate={handleGenerate}
           />
         )}
         {step === 5 && (

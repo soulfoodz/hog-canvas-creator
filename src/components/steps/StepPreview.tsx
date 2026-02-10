@@ -35,7 +35,7 @@ const StepPreview = ({ pigImage, onContinue }: StepPreviewProps) => {
       </div>
 
       <Button className="w-full" onClick={onContinue}>
-        Generate Graphics
+        Continue
       </Button>
     </motion.div>
   );
