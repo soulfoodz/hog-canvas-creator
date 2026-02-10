@@ -1,6 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Plus, Image, Sparkles } from "lucide-react";
+import { Plus, Image, Sparkles, MoreVertical } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { motion } from "framer-motion";
 import { mockTemplateSets } from "@/data/mockTemplates";
 
@@ -92,15 +98,27 @@ const Index = () => {
               className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center">
+                <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center shrink-0">
                   <Image className="w-5 h-5 text-primary" />
                 </div>
-                <div>
+                <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-sm">{set.name}</h3>
                   <p className="text-xs text-muted-foreground">
                     {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
                   </p>
                 </div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
+                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 shrink-0">
+                      <MoreVertical className="w-4 h-4 text-muted-foreground" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="bg-popover z-50">
+                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                    <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                    <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </motion.button>
           ))}
