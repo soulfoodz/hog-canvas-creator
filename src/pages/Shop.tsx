@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Coins, Image, Check } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 import { motion } from "framer-motion";
 
 type Tab = "templates" | "tokens";
@@ -66,6 +67,7 @@ const tokenPackages = [
 const Shop = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<Tab>("templates");
+  const [hasDesigner, setHasDesigner] = useState(false);
 
   return (
     <div className="min-h-screen bg-background flex flex-col max-w-lg mx-auto">
@@ -134,10 +136,30 @@ const Shop = () => {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-3"
           >
-            <p className="text-sm text-muted-foreground mb-4">
-              Unlock premium templates to elevate your auction graphics.
-            </p>
-            {templatePackages.map((pkg) => (
+            <div className="bg-muted/50 border border-border rounded-xl p-4 mb-4">
+              <h3 className="font-semibold text-sm mb-1.5">Custom Branded Templates</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Work with our design team to create a custom, branded template tailored to your farm. Each template set includes your logo, colors, and branding applied across multiple formats.
+              </p>
+            </div>
+
+            <div className="bg-card border border-border rounded-xl p-4 mb-4 flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <h3 className="font-semibold text-sm">I have an in-house designer</h3>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Provide your own designs and save 40% on all template packages.
+                </p>
+              </div>
+              <Switch
+                checked={hasDesigner}
+                onCheckedChange={setHasDesigner}
+              />
+            </div>
+
+            {templatePackages.map((pkg) => {
+              const basePrice = parseFloat(pkg.price.replace("$", ""));
+              const finalPrice = hasDesigner ? (basePrice * 0.6).toFixed(2) : basePrice.toFixed(2);
+              return (
               <div
                 key={pkg.id}
                 className={`relative bg-card border rounded-xl p-4 ${
@@ -157,11 +179,12 @@ const Shop = () => {
                     </p>
                   </div>
                   <Button size="sm" className="rounded-lg font-semibold">
-                    {pkg.price}
+                    ${finalPrice}
                   </Button>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </motion.div>
         )}
 
