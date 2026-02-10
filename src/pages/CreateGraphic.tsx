@@ -6,12 +6,13 @@ import StepSelectTemplate from "@/components/steps/StepSelectTemplate";
 import StepUploadImage from "@/components/steps/StepUploadImage";
 import StepPigInfo from "@/components/steps/StepPigInfo";
 import StepVariations from "@/components/steps/StepVariations";
+import StepPreview from "@/components/steps/StepPreview";
 import StepResults from "@/components/steps/StepResults";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const stepLabels = ["Template", "Photo", "Details", "Variations", "Done"];
+const stepLabels = ["Template", "Photo", "Details", "Variations", "Preview", "Done"];
 
 const initialPigInfo: PigInfo = {
   earNotch: "",
@@ -67,7 +68,7 @@ const CreateGraphic = () => {
 
     setGeneratedAssets(assets);
     setIsGenerating(false);
-    setStep(4);
+    setStep(5);
   };
 
   const handleNewGraphic = () => {
@@ -79,7 +80,7 @@ const CreateGraphic = () => {
     setGeneratedAssets([]);
   };
 
-  const canGoBack = step > 0 && step < 4;
+  const canGoBack = step > 0 && step < 5;
 
   return (
     <div className="min-h-screen bg-background flex flex-col max-w-lg mx-auto">
@@ -99,7 +100,7 @@ const CreateGraphic = () => {
           <div />
         )}
         <h1 className="font-display text-base font-bold">
-          {step === 4 ? "Complete" : "New Graphic"}
+          {step === 5 ? "Complete" : "New Graphic"}
         </h1>
         <Button
           variant="ghost"
@@ -162,10 +163,16 @@ const CreateGraphic = () => {
             templateSet={selectedSet}
             selectedIds={selectedVariations}
             onToggle={toggleVariation}
-            onGenerate={handleGenerate}
+            onGenerate={() => setStep(4)}
           />
         )}
         {step === 4 && (
+          <StepPreview
+            pigImage={pigImage}
+            onContinue={handleGenerate}
+          />
+        )}
+        {step === 5 && (
           <StepResults
             assets={generatedAssets}
             onNewGraphic={handleNewGraphic}
