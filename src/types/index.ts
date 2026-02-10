@@ -18,7 +18,7 @@ export interface PigInfo {
   breed: string;
   sire: string;
   dam: string;
-  sex: "Boar" | "Gilt" | "Barrow" | "";
+  sex: string;
 }
 
 export interface GeneratedAsset {
