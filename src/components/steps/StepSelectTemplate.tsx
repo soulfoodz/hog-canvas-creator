@@ -31,9 +31,6 @@ const StepSelectTemplate = ({ onSelect }: StepSelectTemplateProps) => {
         >
           <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full -translate-y-8 translate-x-8" />
           <div className="relative">
-            <div className="w-11 h-11 rounded-xl bg-accent/15 flex items-center justify-center mb-3">
-              <Sparkles className="w-5 h-5 text-accent" />
-            </div>
             <h3 className="font-display font-bold text-base mb-1">Get a Custom Template Made for You</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Work with our design team to create branded templates tailored to your operation.
