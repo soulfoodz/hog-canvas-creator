@@ -37,7 +37,7 @@ const StepSelectTemplate = ({ onSelect }: StepSelectTemplateProps) => {
             </p>
             <button
               onClick={() => navigate("/shop")}
-              className="w-full h-11 inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-accent-foreground font-semibold text-sm hover:bg-accent/90 transition-colors"
+              className="w-full h-11 inline-flex items-center justify-center gap-2 rounded-xl border border-input bg-background font-semibold text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
             >
               Find Out More
               <ArrowRight className="w-4 h-4" />
