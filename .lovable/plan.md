@@ -1,16 +1,30 @@
 
-## Fix Step Indicator Centering
 
-### Problem
-Every step item has `flex-1`, which makes each item take equal width. The last step item has no connector line after it, so its `flex-1` space is empty — pushing all the circles and lines to the left.
+## Remove Custom Templates + Add Empty State Ad
 
-### Solution
-Change the last step item to NOT use `flex-1`. Only items with connector lines should stretch.
+### Changes
 
-### Technical Change
+1. **`src/data/mockTemplates.ts`** -- Empty the `mockTemplateSets` array while keeping `mockFreeTemplateSets` and `mockSharedTemplateSets` unchanged.
 
-**`src/components/StepIndicator.tsx`** (line 15):
-- Change from: `className="flex items-center gap-1 flex-1"`
-- Change to: conditionally apply `flex-1` only when `i < steps.length - 1`
+2. **`src/pages/Index.tsx`** -- Replace the custom templates list with an empty state ad card:
+   - Headline: "Get a Custom Template Made for You"
+   - Short description about the custom template design service
+   - "Find Out More" button with ArrowRight icon, navigating to `/shop`
+   - Styled with existing `bg-card border border-border rounded-xl p-4` pattern
+   - Remove the DropdownMenu/MoreVertical logic for custom templates since there are none
 
-This way the last circle takes only its natural width, and the preceding circles + lines distribute evenly, making the whole indicator visually centered.
+3. **`src/components/steps/StepSelectTemplate.tsx`** -- Same empty state ad card for the custom templates section when the array is empty, keeping Free and Shared sections as-is.
+
+### Technical Details
+
+**mockTemplates.ts:**
+```typescript
+export const mockTemplateSets: TemplateSet[] = [];
+```
+
+**Index.tsx custom templates section** -- conditional render:
+- If `mockTemplateSets.length === 0`: show a motion-animated card with Sparkles icon, ad copy, and a button/link row with "Find Out More" + ArrowRight arrow linking to `/shop`
+- Otherwise: render existing template list (future-proofed for when real templates exist)
+
+**StepSelectTemplate.tsx** -- same conditional pattern for the "Your Custom Templates" section.
+
