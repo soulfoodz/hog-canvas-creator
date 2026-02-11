@@ -1,13 +1,16 @@
 import { TemplateSet } from "@/types";
 import { mockTemplateSets, mockFreeTemplateSets, mockSharedTemplateSets } from "@/data/mockTemplates";
 import { motion } from "framer-motion";
-import { Image, Gift, Users } from "lucide-react";
+import { Image, Gift, Users, Sparkles, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface StepSelectTemplateProps {
   onSelect: (templateSet: TemplateSet) => void;
 }
 
 const StepSelectTemplate = ({ onSelect }: StepSelectTemplateProps) => {
+  const navigate = useNavigate();
+
   return (
     <div className="px-4 pb-6">
       <h2 className="font-display text-xl font-bold mb-1">Choose a Template</h2>
@@ -20,30 +23,55 @@ const StepSelectTemplate = ({ onSelect }: StepSelectTemplateProps) => {
         <Image className="w-4 h-4 text-muted-foreground" />
         Your Custom Templates
       </h3>
-      <div className="space-y-3">
-        {mockTemplateSets.map((set, i) => (
-          <motion.button
-            key={set.id}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.08 }}
-            onClick={() => onSelect(set)}
-            className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center shrink-0">
-                <Image className="w-5 h-5 text-primary" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-sm">{set.name}</h3>
-                <p className="text-xs text-muted-foreground">
-                  {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
-                </p>
-              </div>
+      {mockTemplateSets.length === 0 ? (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-card border border-border rounded-xl p-5"
+        >
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5 text-accent" />
             </div>
-          </motion.button>
-        ))}
-      </div>
+            <h3 className="font-semibold text-sm">Get a Custom Template Made for You</h3>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            Work with our design team to create branded templates tailored to your operation.
+          </p>
+          <button
+            onClick={() => navigate("/shop")}
+            className="flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+          >
+            Find Out More
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </motion.div>
+      ) : (
+        <div className="space-y-3">
+          {mockTemplateSets.map((set, i) => (
+            <motion.button
+              key={set.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.08 }}
+              onClick={() => onSelect(set)}
+              className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center shrink-0">
+                  <Image className="w-5 h-5 text-primary" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-sm">{set.name}</h3>
+                  <p className="text-xs text-muted-foreground">
+                    {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
+                  </p>
+                </div>
+              </div>
+            </motion.button>
+          ))}
+        </div>
+      )}
 
       {/* Free Templates */}
       {mockFreeTemplateSets.length > 0 && (
