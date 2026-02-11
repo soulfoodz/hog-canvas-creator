@@ -75,24 +75,25 @@ const Index = () => {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
-            className="bg-card border border-border rounded-xl p-5"
+            className="relative overflow-hidden rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 via-card to-primary/5 p-6"
           >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full -translate-y-8 translate-x-8" />
+            <div className="relative">
+              <div className="w-11 h-11 rounded-xl bg-accent/15 flex items-center justify-center mb-3">
                 <Sparkles className="w-5 h-5 text-accent" />
               </div>
-              <h3 className="font-semibold text-sm">Get a Custom Template Made for You</h3>
+              <h3 className="font-display font-bold text-base mb-1">Get a Custom Template Made for You</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Work with our design team to create branded templates tailored to your operation.
+              </p>
+              <Button
+                onClick={() => navigate("/shop")}
+                className="w-full h-11 gap-2 rounded-xl font-semibold"
+              >
+                Find Out More
+                <ArrowRight className="w-4 h-4" />
+              </Button>
             </div>
-            <p className="text-xs text-muted-foreground mb-3">
-              Work with our design team to create branded templates tailored to your operation.
-            </p>
-            <button
-              onClick={() => navigate("/shop")}
-              className="flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-            >
-              Find Out More
-              <ArrowRight className="w-4 h-4" />
-            </button>
           </motion.div>
         ) : (
           <div className="space-y-3">
