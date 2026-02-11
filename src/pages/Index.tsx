@@ -85,7 +85,7 @@ const Index = () => {
               </p>
               <Button
                 onClick={() => navigate("/shop")}
-                className="w-full h-11 gap-2 rounded-xl font-semibold"
+                className="w-full h-11 gap-2 rounded-xl font-semibold bg-accent text-accent-foreground hover:bg-accent/90"
               >
                 Find Out More
                 <ArrowRight className="w-4 h-4" />
