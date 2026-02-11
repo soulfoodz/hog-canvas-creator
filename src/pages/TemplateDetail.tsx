@@ -56,14 +56,6 @@ const TemplateDetail = () => {
         <h1 className="font-display text-base font-bold flex-1 truncate">
           {templateSet.name}
         </h1>
-        <Button
-          size="sm"
-          className="gap-1.5 shrink-0"
-          onClick={() => navigate("/create")}
-        >
-          <Plus className="w-4 h-4" />
-          New
-        </Button>
       </header>
 
       <div className="px-4 pt-4 pb-2">
