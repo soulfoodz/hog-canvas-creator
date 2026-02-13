@@ -1,17 +1,45 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Plus, Image, Sparkles, MoreVertical, Users, Gift, Coins, ArrowRight } from "lucide-react";
+import { Plus, Image, Sparkles, MoreVertical, Users, Gift, Coins, ArrowRight, Share2, Copy, Check } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { mockTemplateSets, mockFreeTemplateSets, mockSharedTemplateSets } from "@/data/mockTemplates";
 
 const Index = () => {
   const navigate = useNavigate();
+  const [shareDialogOpen, setShareDialogOpen] = useState(false);
+  const [shareTemplateId, setShareTemplateId] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  const shareLink = shareTemplateId
+    ? `${window.location.origin}/template/${shareTemplateId}`
+    : "";
+
+  const handleShare = (e: React.MouseEvent, templateId: string) => {
+    e.stopPropagation();
+    setShareTemplateId(templateId);
+    setCopied(false);
+    setShareDialogOpen(true);
+  };
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(shareLink);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const totalTemplates = mockTemplateSets.reduce(
     (sum, s) => sum + s.templates.length,
@@ -101,7 +129,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 + i * 0.08 }}
-                onClick={() => navigate("/create")}
+                onClick={() => navigate(`/template/${set.id}`)}
                 className="w-full bg-card border border-border rounded-xl p-4 text-left active:scale-[0.98] transition-transform"
               >
                 <div className="flex items-center gap-3">
@@ -114,18 +142,14 @@ const Index = () => {
                       {set.templates.length} variation{set.templates.length > 1 ? "s" : ""}
                     </p>
                   </div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
-                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0 shrink-0">
-                        <MoreVertical className="w-4 h-4 text-muted-foreground" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="bg-popover z-50">
-                      <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Duplicate</DropdownMenuItem>
-                      <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 w-8 p-0 shrink-0"
+                    onClick={(e) => handleShare(e, set.id)}
+                  >
+                    <Share2 className="w-4 h-4 text-muted-foreground" />
+                  </Button>
                 </div>
               </motion.button>
             ))}
@@ -231,6 +255,32 @@ const Index = () => {
 
       {/* Bottom padding for mobile */}
       <div className="h-8" />
+
+      {/* Share Dialog */}
+      <Dialog open={shareDialogOpen} onOpenChange={setShareDialogOpen}>
+        <DialogContent className="max-w-sm mx-auto">
+          <DialogHeader>
+            <DialogTitle className="font-display">Share Template</DialogTitle>
+            <DialogDescription>
+              Anyone with this link will be able to use this template.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center gap-2 mt-2">
+            <div className="flex-1 bg-muted rounded-lg px-3 py-2.5 text-sm text-foreground truncate select-all">
+              {shareLink}
+            </div>
+            <Button
+              size="sm"
+              variant="outline"
+              className="shrink-0 gap-1.5"
+              onClick={handleCopy}
+            >
+              {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              {copied ? "Copied" : "Copy"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
