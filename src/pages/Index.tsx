@@ -259,25 +259,24 @@ const Index = () => {
 
     {/* Share Dialog - outside max-w container */}
     <Dialog open={shareDialogOpen} onOpenChange={setShareDialogOpen}>
-      <DialogContent className="max-w-sm mx-auto">
+      <DialogContent className="w-[calc(100%-2rem)] max-w-sm rounded-xl">
         <DialogHeader>
           <DialogTitle className="font-display">Share Template</DialogTitle>
           <DialogDescription>
             Anyone with this link will be able to use this template.
           </DialogDescription>
         </DialogHeader>
-        <div className="flex items-center gap-2 mt-2">
-          <div className="flex-1 bg-muted rounded-lg px-3 py-2.5 text-sm text-foreground truncate select-all">
+        <div className="space-y-3 mt-2">
+          <div className="w-full bg-muted rounded-lg px-3 py-2.5 text-sm text-foreground truncate select-all overflow-hidden">
             {shareLink}
           </div>
           <Button
-            size="sm"
             variant="outline"
-            className="shrink-0 gap-1.5"
+            className="w-full gap-1.5"
             onClick={handleCopy}
           >
             {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-            {copied ? "Copied" : "Copy"}
+            {copied ? "Copied!" : "Copy Link"}
           </Button>
         </div>
       </DialogContent>
