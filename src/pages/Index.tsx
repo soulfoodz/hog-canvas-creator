@@ -46,7 +46,7 @@ const Index = () => {
     0
   );
 
-  return (
+  return (<>
     <div className="min-h-screen bg-background flex flex-col max-w-lg mx-auto">
       {/* Header */}
       <header className="px-4 pt-6 pb-4">
@@ -255,34 +255,34 @@ const Index = () => {
 
       {/* Bottom padding for mobile */}
       <div className="h-8" />
-
-      {/* Share Dialog */}
-      <Dialog open={shareDialogOpen} onOpenChange={setShareDialogOpen}>
-        <DialogContent className="max-w-sm mx-auto">
-          <DialogHeader>
-            <DialogTitle className="font-display">Share Template</DialogTitle>
-            <DialogDescription>
-              Anyone with this link will be able to use this template.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex items-center gap-2 mt-2">
-            <div className="flex-1 bg-muted rounded-lg px-3 py-2.5 text-sm text-foreground truncate select-all">
-              {shareLink}
-            </div>
-            <Button
-              size="sm"
-              variant="outline"
-              className="shrink-0 gap-1.5"
-              onClick={handleCopy}
-            >
-              {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-              {copied ? "Copied" : "Copy"}
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
-  );
+
+    {/* Share Dialog - outside max-w container */}
+    <Dialog open={shareDialogOpen} onOpenChange={setShareDialogOpen}>
+      <DialogContent className="max-w-sm mx-auto">
+        <DialogHeader>
+          <DialogTitle className="font-display">Share Template</DialogTitle>
+          <DialogDescription>
+            Anyone with this link will be able to use this template.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="flex items-center gap-2 mt-2">
+          <div className="flex-1 bg-muted rounded-lg px-3 py-2.5 text-sm text-foreground truncate select-all">
+            {shareLink}
+          </div>
+          <Button
+            size="sm"
+            variant="outline"
+            className="shrink-0 gap-1.5"
+            onClick={handleCopy}
+          >
+            {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+            {copied ? "Copied" : "Copy"}
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  </>);
 };
 
 export default Index;
