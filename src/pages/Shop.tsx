@@ -218,31 +218,26 @@ const Shop = () => {
                   </span>
                 )}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                      <Coins className="w-5 h-5 text-accent" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-sm">{pkg.name}</h3>
-                      <p className="text-xs text-muted-foreground mt-0.5">
-                        {pkg.description}
+                  <div>
+                    <h3 className="font-semibold text-sm">{pkg.name}</h3>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      {pkg.description}
+                    </p>
+                    {pkg.freeGraphics && (
+                      <p className="text-xs text-primary font-semibold mt-0.5">
+                        🎁 Includes {pkg.freeGraphics} FREE Graphic{pkg.freeGraphics > 1 ? "s" : ""}
                       </p>
-                      {pkg.freeGraphics && (
-                        <p className="text-xs text-primary font-semibold mt-0.5">
-                          🎁 Includes {pkg.freeGraphics} FREE Graphic{pkg.freeGraphics > 1 ? "s" : ""}
-                        </p>
-                      )}
+                    )}
+                  </div>
+                  <Button size="sm" className="rounded-lg font-semibold">
+                    {pkg.price}
+                  </Button>
                 </div>
                 {pkg.costPerGraphic && (
                   <p className="text-xs text-muted-foreground mt-2 text-right">
                     Only <span className="font-semibold text-foreground">{pkg.costPerGraphic}</span> per graphic
                   </p>
                 )}
-              </div>
-                  <Button size="sm" className="rounded-lg font-semibold">
-                    {pkg.price}
-                  </Button>
-                </div>
               </div>
             ))}
           </motion.div>
