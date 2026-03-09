@@ -232,8 +232,13 @@ const Shop = () => {
                           🎁 Includes {pkg.freeGraphics} FREE Graphic{pkg.freeGraphics > 1 ? "s" : ""}
                         </p>
                       )}
-                    </div>
-                  </div>
+                </div>
+                {pkg.costPerGraphic && (
+                  <p className="text-xs text-muted-foreground mt-2 text-right">
+                    Only <span className="font-semibold text-foreground">{pkg.costPerGraphic}</span> per graphic
+                  </p>
+                )}
+              </div>
                   <Button size="sm" className="rounded-lg font-semibold">
                     {pkg.price}
                   </Button>
