@@ -217,22 +217,20 @@ const Shop = () => {
                     Popular
                   </span>
                 )}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-semibold text-sm">{pkg.name}</h3>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      {pkg.description}
+                <div>
+                  <h3 className="font-semibold text-sm">{pkg.name}</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    {pkg.description}
+                  </p>
+                  {pkg.freeGraphics && (
+                    <p className="text-xs text-primary font-semibold mt-0.5">
+                      🎁 Includes {pkg.freeGraphics} FREE Graphic{pkg.freeGraphics > 1 ? "s" : ""}
                     </p>
-                    {pkg.freeGraphics && (
-                      <p className="text-xs text-primary font-semibold mt-0.5">
-                        🎁 Includes {pkg.freeGraphics} FREE Graphic{pkg.freeGraphics > 1 ? "s" : ""}
-                      </p>
-                    )}
-                  </div>
-                  <Button size="sm" className="rounded-lg font-semibold">
-                    {pkg.price}
-                  </Button>
+                  )}
                 </div>
+                <Button className="w-full rounded-lg font-semibold mt-3">
+                  {pkg.price}
+                </Button>
                 {pkg.costPerGraphic && (
                   <p className="text-xs text-muted-foreground mt-2 text-right">
                     Only <span className="font-semibold text-foreground">{pkg.costPerGraphic}</span> per graphic
