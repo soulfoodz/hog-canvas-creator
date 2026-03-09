@@ -67,6 +67,7 @@ const tokenPackages = [
     tokens: 150,
     freeGraphics: 8,
     costPerGraphic: "$8.33",
+    badge: "Best Value",
   },
 ];
 
