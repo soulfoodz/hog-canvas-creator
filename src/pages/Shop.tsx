@@ -127,12 +127,6 @@ const Shop = () => {
         </motion.div>
       </div>
 
-      {/* Header */}
-      <div className="px-4 mb-6 text-center">
-        <h2 className="font-display text-xl font-bold mb-1">Create Professional Graphics in Seconds</h2>
-        <p className="text-sm text-muted-foreground">Promote your lots. Celebrate winners. Build your brand.</p>
-      </div>
-
       {/* Packages */}
       <div className="px-4 flex-1">
         {activeTab === "templates" && (
@@ -201,6 +195,10 @@ const Shop = () => {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-3"
           >
+            <div className="text-center mb-3">
+              <h2 className="font-display text-xl font-bold mb-1">Create Professional Graphics in Seconds</h2>
+              <p className="text-sm text-muted-foreground">Promote your lots. Celebrate winners. Build your brand.</p>
+            </div>
             {tokenPackages.map((pkg) => (
               <div
                 key={pkg.id}
