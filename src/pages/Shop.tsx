@@ -36,14 +36,14 @@ const tokenPackages = [
   {
     id: "cp-1",
     name: "Starter",
-    description: "Get started with a small pack",
+    description: "2 Graphics",
     price: "$4.99",
     tokens: 10,
   },
   {
     id: "cp-2",
     name: "Breeder",
-    description: "Most popular choice",
+    description: "11 Graphics",
     price: "$11.99",
     tokens: 30,
     popular: true,
@@ -51,14 +51,14 @@ const tokenPackages = [
   {
     id: "cp-3",
     name: "Pro",
-    description: "Best value for power users",
+    description: "23 Graphics",
     price: "$24.99",
     tokens: 75,
   },
   {
     id: "cp-4",
     name: "Elite",
-    description: "Go all in",
+    description: "48 Graphics",
     price: "$39.99",
     tokens: 150,
   },
