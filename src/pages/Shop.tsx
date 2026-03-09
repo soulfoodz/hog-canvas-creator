@@ -35,14 +35,14 @@ const templatePackages = [
 const tokenPackages = [
   {
     id: "cp-1",
-    name: "10 Tokens",
+    name: "Starter",
     description: "Get started with a small pack",
     price: "$4.99",
     tokens: 10,
   },
   {
     id: "cp-2",
-    name: "30 Tokens",
+    name: "Breeder",
     description: "Most popular choice",
     price: "$11.99",
     tokens: 30,
@@ -50,14 +50,14 @@ const tokenPackages = [
   },
   {
     id: "cp-3",
-    name: "75 Tokens",
+    name: "Pro",
     description: "Best value for power users",
     price: "$24.99",
     tokens: 75,
   },
   {
     id: "cp-4",
-    name: "150 Tokens",
+    name: "Elite",
     description: "Go all in",
     price: "$39.99",
     tokens: 150,
