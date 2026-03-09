@@ -218,11 +218,7 @@ const Shop = () => {
                   </span>
                 )}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                      <Coins className="w-5 h-5 text-accent" />
-                    </div>
-                    <div>
+                  <div>
                       <h3 className="font-semibold text-sm">{pkg.name}</h3>
                       <p className="text-xs text-muted-foreground mt-0.5">
                         {pkg.description}
@@ -232,7 +228,7 @@ const Shop = () => {
                           🎁 Includes {pkg.freeGraphics} FREE Graphic{pkg.freeGraphics > 1 ? "s" : ""}
                         </p>
                       )}
-                </div>
+                  </div>
                 {pkg.costPerGraphic && (
                   <p className="text-xs text-muted-foreground mt-2 text-right">
                     Only <span className="font-semibold text-foreground">{pkg.costPerGraphic}</span> per graphic
