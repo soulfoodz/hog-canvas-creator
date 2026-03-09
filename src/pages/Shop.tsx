@@ -47,6 +47,7 @@ const tokenPackages = [
     price: "$11.99",
     tokens: 30,
     popular: true,
+    freeGraphics: 1,
   },
   {
     id: "cp-3",
@@ -54,6 +55,7 @@ const tokenPackages = [
     description: "23 Graphics",
     price: "$24.99",
     tokens: 75,
+    freeGraphics: 3,
   },
   {
     id: "cp-4",
@@ -61,6 +63,7 @@ const tokenPackages = [
     description: "48 Graphics",
     price: "$39.99",
     tokens: 150,
+    freeGraphics: 8,
   },
 ];
 
