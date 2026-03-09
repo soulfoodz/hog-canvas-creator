@@ -127,6 +127,12 @@ const Shop = () => {
         </motion.div>
       </div>
 
+      {/* Header */}
+      <div className="px-4 mb-6 text-center">
+        <h2 className="font-display text-xl font-bold mb-1">Create Professional Graphics in Seconds</h2>
+        <p className="text-sm text-muted-foreground">Promote your lots. Celebrate winners. Build your brand.</p>
+      </div>
+
       {/* Packages */}
       <div className="px-4 flex-1">
         {activeTab === "templates" && (
@@ -195,26 +201,6 @@ const Shop = () => {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-3"
           >
-            <p className="text-sm text-muted-foreground mb-4">
-              Tokens are used to generate graphics from your templates. You'll use them to pay for your graphics.
-            </p>
-
-            <div className="bg-muted/50 border border-border rounded-xl p-4 mb-4">
-              <h3 className="font-semibold text-sm mb-2">Token Pricing</h3>
-              <div className="space-y-1.5 text-sm text-muted-foreground">
-                <div className="flex items-center justify-between">
-                  <span>Image Graphic (1 variant)</span>
-                  <span className="font-semibold text-foreground">10 tokens</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>Each additional variant</span>
-                  <span className="font-semibold text-foreground">+5 tokens</span>
-                </div>
-              </div>
-              <p className="text-xs text-muted-foreground mt-3">
-                Variants include square, landscape, and story formats.
-              </p>
-            </div>
             {tokenPackages.map((pkg) => (
               <div
                 key={pkg.id}
