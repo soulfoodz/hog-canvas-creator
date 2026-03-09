@@ -127,6 +127,12 @@ const Shop = () => {
         </motion.div>
       </div>
 
+      {/* Header */}
+      <div className="px-4 mb-6 text-center">
+        <h2 className="font-display text-xl font-bold mb-1">Create Professional Graphics in Seconds</h2>
+        <p className="text-sm text-muted-foreground">Promote your lots. Celebrate winners. Build your brand.</p>
+      </div>
+
       {/* Packages */}
       <div className="px-4 flex-1">
         {activeTab === "templates" && (
