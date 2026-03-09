@@ -218,7 +218,12 @@ const Shop = () => {
                   </span>
                 )}
                 <div>
-                  <h3 className="font-semibold text-sm">{pkg.name}</h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-semibold text-sm">{pkg.name}</h3>
+                    {pkg.costPerGraphic && (
+                      <span className="text-xs text-muted-foreground">· {pkg.costPerGraphic}/graphic</span>
+                    )}
+                  </div>
                   <p className="text-xs text-muted-foreground mt-0.5">
                     {pkg.description}
                   </p>
@@ -231,11 +236,6 @@ const Shop = () => {
                 <Button className="w-full rounded-lg font-semibold mt-3">
                   {pkg.price}
                 </Button>
-                {pkg.costPerGraphic && (
-                  <p className="text-xs text-muted-foreground mt-2 text-right">
-                    Only <span className="font-semibold text-foreground">{pkg.costPerGraphic}</span> per graphic
-                  </p>
-                )}
               </div>
             ))}
           </motion.div>
