@@ -67,6 +67,7 @@ const tokenPackages = [
     tokens: 150,
     freeGraphics: 8,
     costPerGraphic: "$8.33",
+    badge: "Best Value",
   },
 ];
 
@@ -209,12 +210,17 @@ const Shop = () => {
               <div
                 key={pkg.id}
                 className={`relative bg-card border rounded-xl p-4 ${
-                  pkg.popular ? "border-primary" : "border-border"
+                  pkg.popular ? "border-primary shadow-sm shadow-primary/10" : pkg.badge ? "border-accent shadow-sm shadow-accent/10" : "border-border"
                 }`}
               >
                 {pkg.popular && (
-                  <span className="absolute -top-2.5 left-4 bg-primary text-primary-foreground text-xs font-semibold px-2 py-0.5 rounded-full">
-                    Popular
+                  <span className="absolute -top-2.5 left-4 bg-primary text-primary-foreground text-[11px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full">
+                    ⭐ Most Popular
+                  </span>
+                )}
+                {pkg.badge && (
+                  <span className="absolute -top-2.5 left-4 bg-accent text-accent-foreground text-[11px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full">
+                    🏆 {pkg.badge}
                   </span>
                 )}
                 <div>
