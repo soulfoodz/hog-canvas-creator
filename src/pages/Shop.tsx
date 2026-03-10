@@ -234,9 +234,13 @@ const Shop = () => {
                     <p className="text-xs text-muted-foreground mt-0.5">
                       {pkg.description}
                     </p>
-                    {pkg.freeGraphics && (
+                    {pkg.freeGraphics ? (
                       <p className="text-xs text-primary font-semibold mt-1">
                         🎁 +{pkg.freeGraphics} FREE Graphic{pkg.freeGraphics > 1 ? "s" : ""}
+                      </p>
+                    ) : (
+                      <p className="text-xs text-muted-foreground font-medium mt-1">
+                        ✨ Try it out
                       </p>
                     )}
                   </div>
