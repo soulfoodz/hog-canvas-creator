@@ -67,9 +67,6 @@ const Index = () => {
               <span>10</span>
             </button>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Generate custom social media content for your auction listings and more in seconds.
-          </p>
         </motion.div>
       </header>
 
