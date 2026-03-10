@@ -81,7 +81,7 @@ const Shop = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col max-w-lg mx-auto">
       {/* Header */}
-      <header className="px-4 pt-6 pb-4">
+      <header className="px-4 pt-6 pb-2">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -100,6 +100,24 @@ const Shop = () => {
             <Coins className="w-4 h-4" />
             <span>10</span>
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.05 }}
+          className="flex items-center justify-center gap-3 mt-3 mb-1"
+        >
+          <img
+            src={exampleGraphic1}
+            alt="Example show pig graphic"
+            className="w-20 h-20 rounded-lg object-cover shadow-md border border-border -rotate-3"
+          />
+          <img
+            src={exampleGraphic2}
+            alt="Example show pig graphic"
+            className="w-20 h-20 rounded-lg object-cover shadow-md border border-border rotate-2"
+          />
         </motion.div>
       </header>
 
