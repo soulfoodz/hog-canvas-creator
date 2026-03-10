@@ -223,25 +223,27 @@ const Shop = () => {
                     🏆 {pkg.badge}
                   </span>
                 )}
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-semibold text-sm">{pkg.name}</h3>
-                    {pkg.costPerGraphic && (
-                      <span className="text-xs text-muted-foreground">· {pkg.costPerGraphic}/graphic</span>
+                <div className="flex items-start justify-between">
+                  <div className="min-w-0">
+                    <div className="flex items-baseline gap-2">
+                      <h3 className="font-display font-bold text-base">{pkg.name}</h3>
+                      {pkg.costPerGraphic && (
+                        <span className="text-sm font-semibold text-accent">{pkg.costPerGraphic}<span className="text-xs font-normal text-muted-foreground">/graphic</span></span>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      {pkg.description}
+                    </p>
+                    {pkg.freeGraphics && (
+                      <p className="text-xs text-primary font-semibold mt-1">
+                        🎁 +{pkg.freeGraphics} FREE Graphic{pkg.freeGraphics > 1 ? "s" : ""}
+                      </p>
                     )}
                   </div>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    {pkg.description}
-                  </p>
-                  {pkg.freeGraphics && (
-                    <p className="text-xs text-primary font-semibold mt-0.5">
-                      🎁 Includes {pkg.freeGraphics} FREE Graphic{pkg.freeGraphics > 1 ? "s" : ""}
-                    </p>
-                  )}
+                  <Button variant="outline" size="sm" className="rounded-lg font-semibold shrink-0 ml-3">
+                    {pkg.price}
+                  </Button>
                 </div>
-                <Button className="w-full rounded-lg font-semibold mt-3">
-                  {pkg.price}
-                </Button>
               </div>
             ))}
           </motion.div>
