@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Coins, Image, Check } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { motion } from "framer-motion";
+import exampleGraphic1 from "@/assets/example-graphic-1.jpg";
+import exampleGraphic2 from "@/assets/example-graphic-2.jpg";
 
 type Tab = "templates" | "tokens";
 
