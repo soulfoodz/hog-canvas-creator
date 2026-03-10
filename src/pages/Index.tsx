@@ -79,10 +79,16 @@ const Index = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
+          className="relative overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-accent/5 p-4"
         >
+          <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-full -translate-y-6 translate-x-6" />
+          <p className="text-sm font-medium text-foreground mb-3 relative">
+            <Sparkles className="w-4 h-4 text-accent inline mr-1.5 -mt-0.5" />
+            Pick a template, upload a photo, and your graphic is ready to share.
+          </p>
           <Button
             onClick={() => navigate("/create")}
-            className="w-full h-14 text-base font-semibold gap-2 rounded-xl"
+            className="w-full h-13 text-base font-semibold gap-2 rounded-xl shadow-lg shadow-primary/20 relative"
           >
             <Plus className="w-5 h-5" />
             Create New Graphic
