@@ -39,6 +39,7 @@ const tokenPackages = [
     description: "2 Graphics",
     price: "$4.99",
     tokens: 10,
+    costPerGraphic: "$10",
   },
   {
     id: "cp-2",
