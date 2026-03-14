@@ -271,22 +271,7 @@ const Shop = () => {
         )}
       </div>
 
-      {/* Gallery CTA */}
-      <div className="px-4 py-5">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          <Button
-            className="w-full h-12 rounded-xl font-bold text-base gap-2 bg-gradient-to-r from-accent to-primary shadow-lg shadow-primary/25"
-            onClick={() => navigate("/gallery")}
-          >
-            <Image className="w-5 h-5" />
-            View Example Gallery
-          </Button>
-        </motion.div>
-      </div>
+      <div className="h-8" />
     </div>
   );
 };
