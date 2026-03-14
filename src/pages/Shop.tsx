@@ -109,7 +109,8 @@ const Shop = () => {
           transition={{ delay: 0.1 }}
         >
           <Button
-            className="w-full h-12 rounded-xl font-bold text-base gap-2 bg-gradient-to-r from-accent to-primary shadow-lg shadow-primary/25"
+            variant="outline"
+            className="w-full h-12 rounded-xl font-bold text-base gap-2"
             onClick={() => navigate("/gallery")}
           >
             <Image className="w-5 h-5" />
