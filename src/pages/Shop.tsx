@@ -254,7 +254,17 @@ const Shop = () => {
         )}
       </div>
 
-      <div className="h-8" />
+      {/* Gallery CTA */}
+      <div className="px-4 py-5">
+        <Button
+          variant="outline"
+          className="w-full rounded-xl font-semibold gap-2"
+          onClick={() => navigate("/gallery")}
+        >
+          <Image className="w-4 h-4" />
+          View Example Gallery
+        </Button>
+      </div>
     </div>
   );
 };

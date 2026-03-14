@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Index from "./pages/Index";
 import CreateGraphic from "./pages/CreateGraphic";
 import Shop from "./pages/Shop";
+import Gallery from "./pages/Gallery";
 import TemplateDetail from "./pages/TemplateDetail";
 import NotFound from "./pages/NotFound";
 
